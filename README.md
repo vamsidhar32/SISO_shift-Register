@@ -4,6 +4,10 @@
    Design description of SISO shift register.First we give 2 inputs to D fliflop ,one is clock, second is a serial input of bits. Now the output is connected to the input of next flipflop but the clock input is same as the first flipflop.Likewise we connect 4 flipflops to get 4 bit shift register. Register is a group of filpflops
 used to store multiple bits of data.Registers play a key role in
 the processor for manipulating data.
+<p align="center">
+  <img  src="/images/2.png">
+</p>
+
 
 ## Introduction ##
 
@@ -56,6 +60,10 @@ of the clock hits again.The stored word is changed to 1110.
 5.Finally stored data will be 1111 as shown in truth table and
 timing diagram.
 
+<p align="center">
+  <img  src="/images/4.png">
+</p>
+
 ## Tool installation Details ##
    #### 1.About iverilog ####
    Icarus Verilog is a Verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format.
@@ -74,9 +82,14 @@ timing diagram.
          $   gtkwave test1.vcd
          
  ## Functional Characteristics ##
+       Simulation results of Shift register.
+       We can observe the shifting of serial input data.
+       Test bench is given according to the graph.
+ 
+   <p align="center">
+  <img  src="/images/8.png">
+  </p>
    
-   hjdgcbdihv
-   dvjh
    
  ## Contributors ##
     P.Vamsidhar Reddy
