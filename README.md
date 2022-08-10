@@ -65,9 +65,9 @@ timing diagram.
          $ sudo apt-get install iverilog 
          $ sudo apt-get install gtkwave 
    #### 4. Executing the project ####
-         $   git clone https://github.com/sanampudig/iiitb_pwm_gen
-         $   cd iiitb_pwm_gen
-         $   iverilog iiitb_pwm_gen.v iiitb_pwm_gen_tb.v
+         $   git clone https://github.com/vamsidhar32/SISO_shift-Register
+         $   cd SISO_shift-register
+         $   iverilog 
          $   ./a.out
          $   gtkwave pwm.vcd
          
