@@ -1,1 +1,1 @@
-# SISO_shift-Register
+ ##### 4-BIT SISO SHIFT REGISTER 
