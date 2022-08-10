@@ -22,7 +22,9 @@ the flipflops present in shift register.
 
 ## Block Diagram of SISO Shift Register ##
 
-https://github.com/vamsidhar32/SISO_shift-Register/blob/main/images/1.png
+<p align="center">
+  <img  src="/images/1.png">
+</p>
 
 1.The circuit consists of 4 D flipflops.Every flipflop is connected to a single clock wave.As only one clock signal is
 given to all the 4 flipflops this is synchronous in nature.We
@@ -67,9 +69,9 @@ timing diagram.
    #### 4. Executing the project ####
          $   git clone https://github.com/vamsidhar32/SISO_shift-Register
          $   cd SISO_shift-register
-         $   iverilog 
+         $   iverilog iiitb_SISO_Shiftregister.v iiitb_SISO_Shiftregister_tb.v
          $   ./a.out
-         $   gtkwave pwm.vcd
+         $   gtkwave test1.vcd
          
  ## Functional Characteristics ##
    
