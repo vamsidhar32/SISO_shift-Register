@@ -80,7 +80,21 @@ timing diagram.
          $   iverilog iiitb_SISO_Shiftregister.v iiitb_SISO_Shiftregister_tb.v
          $   ./a.out
          $   gtkwave test1.vcd
-         
+   #### Systhesis of verilog code ####
+    About Yosys
+               Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for           various application domains.
+               
+      to synthesize
+      $   yosys
+      $   yosys>    script yosys_run.sh
+      
+      
+      o see different types of cells after synthesys
+        $   yosys>    stat
+      to generate schematics
+      $   yosys>    show
+      
+      
  ## Functional Characteristics ##
        Simulation results of Shift register.
        We can observe the shifting of serial input data.
