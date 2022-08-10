@@ -22,6 +22,8 @@ the flipflops present in shift register.
 
 ## Block Diagram of SISO Shift Register ##
 
+https://github.com/vamsidhar32/SISO_shift-Register/blob/main/images/1.png
+
 1.The circuit consists of 4 D flipflops.Every flipflop is connected to a single clock wave.As only one clock signal is
 given to all the 4 flipflops this is synchronous in nature.We
 know that in D filpflop for every falling clock edge the input
