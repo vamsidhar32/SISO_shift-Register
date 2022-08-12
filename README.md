@@ -75,8 +75,8 @@ timing diagram.
          $ sudo apt-get install iverilog 
          $ sudo apt-get install gtkwave 
    #### 4. Executing the project ####
-         $   git clone https://github.com/vamsidhar32/SISO_shift-Register
-         $   cd SISO_shift-register
+         $   git clone https://github.com/vamsidhar32/iiitb_SISO_shift-Register
+         $   cd iiitb_SISO_shift-register
          $   iverilog iiitb_SISO_Shiftregister.v iiitb_SISO_Shiftregister_tb.v
          $   ./a.out
          $   gtkwave test1.vcd
