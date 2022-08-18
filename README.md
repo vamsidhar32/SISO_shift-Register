@@ -106,17 +106,22 @@ The software used to run gate level synthesis is Yosys. Yosys is a framework for
   On running the Yosys script with our yosys_run.sh file we get the following types of cells after synthesis
   
   <p align="center">
-  <img  src="/images/8.png">
+  <img  src="/images/a1.png">
   </p>
   
   we get the following schematics of our synthesized siso shift register.
   
   <p align="center">
-  <img  src="/images/8.png">
+  <img  src="/images/a2.png">
   </p>
   
   
  ## Gate level Simulation (GLS) ##
+ GLS is generating the simulation output by running test bench with netlist file generated from synthesis as design under test. Netlist is logically same as RTL code, therefore, same test bench can be used for it.We perform this to verify logical correctness of the design after synthesizing it. Also ensuring the timing of the design is met. Following are the commands to run the GLS simulation:
+ 
+ <p align="center">
+  <img  src="/images/a1.png">
+  </p>
  
    
  ##  Contributors ##
