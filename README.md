@@ -116,12 +116,22 @@ The software used to run gate level synthesis is Yosys. Yosys is a framework for
   </p>
   
   
- ## Gate level Simulation (GLS) ##
- GLS is generating the simulation output by running test bench with netlist file generated from synthesis as design under test. Netlist is logically same as RTL code, therefore, same test bench can be used for it.We perform this to verify logical correctness of the design after synthesizing it. Also ensuring the timing of the design is met. Following are the commands to run the GLS simulation:
+ ## 6. Gate level Simulation (GLS) ##
+ GLS is generating the simulation output by running test bench with netlist file generated from synthesis as design under test. Netlist is logically same as RTL code, therefore, same test bench can be used for it.We perform this to verify logical correctness of the design after synthesizing it. Also ensuring the timing of the design is met.
+Following are the commands to run the GLS simulation:
+      
+      * $ iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 synth_iiitb_siso.v iiitb_siso_tb.v primitives.v sky130_fd_sc_hd.v 
+      * $ ./a.out
+      * $ gtkwave test1.vcd
+      
+   
  
  <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/a3.png">
   </p>
+  
+  The gtkwave output for the netlist should match the output waveform for the RTL design file. As netlist and design code have same set of inputs and outputs, we can use the same testbench and compare the waveforms. After comparing we can observe that both are same
+  
  
    
  ##  Contributors ##
