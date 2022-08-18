@@ -1,5 +1,5 @@
 
-## Design Description ##
+## 1. Design Description ##
 #### 4-BIT SISO SHIFT REGISTER ####
    Design description of SISO shift register.First we give 2 inputs to D fliflop ,one is clock, second is a serial input of bits. Now the output is connected to the input of next flipflop but the clock input is same as the first flipflop.Likewise we connect 4 flipflops to get 4 bit shift register. Register is a group of filpflops
 used to store multiple bits of data.Registers play a key role in
@@ -9,14 +9,14 @@ the processor for manipulating data.
 </p>
 
 
-## Introduction ##
+## 2. Introduction ##
 
    A Shift Register can shift the bits either to the left or to the right. A Shift Register, which shifts the bit to the left, is known as "Shift left register", and it shifts the bit to the right, known as "Right left register".In SISO shift register we will get serial input that is one bit
 after the other through a single data line and produces a serial
 output.So in output we will get the input bits shifting through
 the flipflops present in shift register.
 
-## Applications of Shift Registers ##
+## 3. Applications of Shift Registers ##
  
 1. The main benefit of this counter is, it requires n-number of FFs evaluated to the ring counter to move a given data for producing a series of 2n states.
 2. Serial in – serial out register are used for time delays.
@@ -24,7 +24,7 @@ the flipflops present in shift register.
 4. Many of the digital system operations like division, multiplication are performed by using registers. The data is transferred through serial shift registers and other type.
 
 
-## Block Diagram of SISO Shift Register ##
+## 4. Block Diagram of SISO Shift Register ##
 
 <p align="center">
   <img  src="/images/1.png">
@@ -64,7 +64,7 @@ timing diagram.
   <img  src="/images/4.png">
 </p>
 
-## Tool installation Details ##
+## 5. Tool installation Details ##
    #### 1.About iverilog ####
    Icarus Verilog is a Verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format.
    #### 2.About gtkwave ####
@@ -80,22 +80,8 @@ timing diagram.
          $   iverilog iiitb_SISO_Shiftregister.v iiitb_SISO_Shiftregister_tb.v
          $   ./a.out
          $   gtkwave test1.vcd
-   #### Systhesis of verilog code ####
-    About Yosys
-               Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for           various application domains.
-               
-      to synthesize
-      $   yosys
-      $   yosys>    script yosys_run.sh
-      
-      
-      o see different types of cells after synthesys
-        $   yosys>    stat
-      to generate schematics
-      $   yosys>    show
-      
-      
- ## Functional Characteristics ##
+         
+ ## 6. Functional Characteristics ##
        Simulation results of Shift register.
        We can observe the shifting of serial input data.
        Test bench is given according to the graph.
@@ -104,17 +90,48 @@ timing diagram.
   <img  src="/images/8.png">
   </p>
    
+ ## 5. Systhesis of verilog code using yosys ##
+The software used to run gate level synthesis is Yosys. Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. Yosys can be adapted to perform any synthesis job by combining the existing passes (algorithms) using synthesis scripts and adding additional passes as needed by extending the Yosys C++ code base.
+               
+      to synthesize
+      $   yosys
+      $   yosys>    script yosys_run.sh
+     
+      o see different types of cells after synthesis
+      $   yosys>    stat
+      
+      to generate schematics
+      $   yosys>    show
+      
+  On running the Yosys script with our yosys_run.sh file we get the following types of cells after synthesis
+  
+  <p align="center">
+  <img  src="/images/8.png">
+  </p>
+  
+  we get the following schematics of our synthesized siso shift register.
+  
+  <p align="center">
+  <img  src="/images/8.png">
+  </p>
+  
+  
+ ## Gate level Simulation (GLS) ##
+ 
    
- ## Contributors ##
+ ##  Contributors ##
     P.Vamsidhar Reddy
     Kunal Ghosh
- ## Acknowledgements ##
+    
+ ##  Acknowledgements ##
     Kunal Ghosh, Director, VSD Corp. Pvt. Ltd.
     Madhav Rao, Associate Professor, IIIT Bangalore
- ## Contact information ##
+ 
+ ##  Contact information ##
     P.Vamsidhar Reddy, imtech2020 Student, International Institute of Information Technology, Bangalore , Vamsidhar.Paluchani@iiitb.ac.in
     Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalghosh@gmail.com
- ## References ## 
+ 
+ ## 10. References ## 
      https://github.com/raghavrv/verilog/blob/master/siso.v
      https://www.javatpoint.com/shift-registers-in-digital-electronics
      https://www.electronicshub.org/shift-registers/#Applications_of_Shift_Registers
