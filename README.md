@@ -427,6 +427,7 @@ Now, we can observe that the sky130_vsdinv is included in merged.nom.lef file.
   * Technology Mapping – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK.
   
   To synthesize run the command
+  
   ```
   % run_synthesis
   ```
@@ -441,6 +442,115 @@ Now, we can observe that the sky130_vsdinv is included in merged.nom.lef file.
   <img  src="/images/m4.png">
   </p>
   
+  
+  ## Floor Planning ## 
+  The following command should be used.
+  
+  ```
+  % run_floorplan
+  ```
+  
+  <p align="center">
+  <img  src="/images/l0.png">
+  </p>
+  
+  Run the following command in results/floorplan directory
+  ```
+  magic -T /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read iiitb_siso.def &
+
+  ```
+  <p align="center">
+  <img  src="/images/l1.png">
+  </p>
+  
+  Die Area and Core Area can be viewed in the reports/floorplan directory.
+  <p align="center">
+  <img  src="/images/l2.png">
+  </p>
+  
+  
+  ## Placement ##
+  Use the following command for placement
+  ```
+  % run_placement
+  ```
+  <p align="center">
+  <img  src="/images/p0.png">
+  </p>
+  
+  Layout after placement
+  Run the following command in results/placement directory
+  ```
+  magic -T /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read iiitb_siso.def &
+
+  ```
+   <p align="center">
+  <img  src="/images/p1.png">
+  </p>
+  
+   <p align="center">
+  <img  src="/images/p2.png">
+  </p>
+   <p align="center">
+  <img  src="/images/p3.png">
+  </p>
+  
+  
+  # CTS #
+  
+  Clock tree synteshsis is used to create the clock distribution network that is used to deliver the clock to all sequential elements. The main goal is to create a network with minimal skew across the chip. H-trees are a common network topology that is used to achieve this goal.
+
+run the following command to perform CTS
+```
+% run_cts
+```
+
+<p align="center">
+  <img  src="/images/c1.png">
+  </p>
+  
+  
+ ## Routing ## 
+ Run the following command to run the routing.
+ ```
+ % run_routing
+ ```
+  <p align="center">
+  <img  src="/images/r1.png">
+  </p>
+  
+  Layout After routing
+  Run the following command in results/routing directory
+  ```
+  
+   magic -T /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read iiitb_siso.def &
+
+  ```
+  
+   <p align="center">
+  <img  src="/images/r2.png">
+  </p>
+  
+   <p align="center">
+  <img  src="/images/r3.png">
+  </p>
+  
+  We Should locate vsdinv using cell manager.
+  But for our siso design vsdinv is not required.
+  
+   <p align="center">
+  <img  src="/images/r4.png">
+  </p>
+  
+   <p align="center">
+  <img  src="/images/r5.png">
+  </p>
+  
+  
+  
+  
+ 
+ 
   
   
 
