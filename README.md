@@ -395,6 +395,22 @@ Copy the generated lef file and the lib files from vsdcelldesign/libs to designs
   </p>
 
 
+ ## Layout with costum made sky130_vsdinv ## 
+ Navigate to the OpenLane folder in the terminal and write the following commands.
+ ```
+$ sudo make mount
+$ ./flow.tcl -interactive
+
+% package require openlane 0.9
+
+% prep -design iiitb_freqdiv
+
+% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+% add_lefs -src $lefs
+
+
+ ```
+
  ##  Contributors ##
     P.Vamsidhar Reddy
     Kunal Ghosh
