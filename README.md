@@ -106,7 +106,7 @@ The software used to run gate level synthesis is Yosys. Yosys is a framework for
   On running the Yosys script with our yosys_run.sh file we get the following types of cells after synthesis
   
   <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/v1(1).png">
   </p>
   
   we get the following schematics of our synthesized siso shift register.
@@ -266,13 +266,13 @@ $   magic -T /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.tech/magic/sky13
 
 ```
 <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/z2.png">
   </p>
 
 Layout will open in new window as follows.
 ##### This is layout without vsdinv #####
 <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/z1.png">
   </p>
   
   
@@ -291,7 +291,7 @@ Layout will open in new window as follows.
  
  ### Layout of Inverter cell ###
  <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/x1.png">
   </p>
   
  Now, to extract the spice netlist, type the following commands in the tcl console. Here, parasitic capacitances and resistances of the inverter is extracted by
@@ -304,7 +304,7 @@ ext2spice
  ```
   ### Layout of Inverter cell ###
  <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/x2.png">
   </p>
   
   ###### Generating lef file ######
@@ -314,7 +314,7 @@ ext2spice
   ```
   
   <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/x3.png">
   </p>
   
   Extracted lef file will be as shown below 
@@ -391,7 +391,7 @@ END LIBRARY
 Copy the generated lef file and the lib files from vsdcelldesign/libs to designs/iiit_siso/src.
 
 <p align="center">
-  <img  src="/images/a1.png">
+  <img  src="/images/x4.png">
   </p>
 
 
