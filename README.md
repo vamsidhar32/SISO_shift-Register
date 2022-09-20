@@ -410,6 +410,39 @@ $ ./flow.tcl -interactive
 
 
  ```
+ 
+ <p align="center">
+  <img  src="/images/m1.png">
+  </p>
+  
+Now, we can observe that the sky130_vsdinv is included in merged.nom.lef file.
+
+<p align="center">
+  <img  src="/images/m2.png">
+  </p>
+  
+ ### Synthesis ###
+ Logic synthesis uses the RTL netlist to perform HDL technology mapping. The synthesis process is normally performed in two major steps:
+  * GTECH Mapping – Consists of mapping the HDL netlist to generic gates what are used to perform logical optimization based on AIGERs and other topologies created from the generic mapped netlist.
+  * Technology Mapping – Consists of mapping the post-optimized GTECH netlist to standard cells described in the PDK.
+  
+  To synthesize run the command
+  ```
+  % run_synthesis
+  ```
+  
+  The stats are present in synthesized netlist in results folder.
+  <p align="center">
+  <img  src="/images/m3.png">
+  </p>
+  
+  Also, sta report post synthesis can be viewed by going to the location logs\synthesis\2-sta.log
+  <p align="center">
+  <img  src="/images/m4.png">
+  </p>
+  
+  
+  
 
  ##  Contributors ##
     P.Vamsidhar Reddy
