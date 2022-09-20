@@ -130,10 +130,271 @@ Following are the commands to run the GLS simulation:
   <img  src="/images/a3.png">
   </p>
   
-  The gtkwave output for the netlist should match the output waveform for the RTL design file. As netlist and design code have same set of inputs and outputs, we can use the same testbench and compare the waveforms. After comparing we can observe that both are same
+  The gtkwave output for the netlist should match the output waveform for the RTL design file. As netlist and design code have same set of inputs and outputs, we can use the same testbench and compare the waveforms. After comparing we can observe that both are same.
   
+  
+ ## Layout ##
  
-   
+  
+ #### OpenLane ####
+ OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout and a number of custom scripts for design exploration and optimization. The flow performs full ASIC implementation steps from RTL all the way down to GDSII.
+more at https://github.com/The-OpenROAD-Project/OpenLane.
+
+#### Installation instructions ####
+```
+$   apt install -y build-essential python3 python3-venv python3-pip
+```
+#### Docker installation process ####
+```
+$ sudo apt-get remove docker docker-engine docker.io containerd runc (removes older version of docker if installed)
+
+$ sudo apt-get update
+
+$ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+$ sudo mkdir -p /etc/apt/keyrings
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+$ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
+$ sudo apt-get update
+
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+$ apt-cache madison docker-ce (copy the version string you want to install)
+
+$ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io docker-compose-plugin (paste the version string copies in place of <VERSION_STRING>)
+
+$ sudo docker run hello-world (If the docker is successfully installed u will get a success message here)
+```
+
+Go to Home directory :
+```
+$   git clone https://github.com/The-OpenROAD-Project/OpenLane.git
+$   cd OpenLane/
+$   sudo make
+$   sudo make test
+```
+OpenLane is installed successfully.
+
+## Magic ##
+Magic is a venerable VLSI layout tool, written in the 1980's at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well thought-out core algorithms which lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow.
+More about magic at http://opencircuitdesign.com/magic/index.html
+
+### Run the following commands one by one to install magic successfully ###
+```
+$   sudo apt-get install m4
+$   sudo apt-get install tcsh
+$   sudo apt-get install csh
+$   sudo apt-get install libx11-dev
+$   sudo apt-get install tcl-dev tk-dev
+$   sudo apt-get install libcairo2-dev
+$   sudo apt-get install mesa-common-dev libglu1-mesa-dev
+$   sudo apt-get install libncurses-layout without sky130_vsdinvdev
+```
+### Installing Magic ###
+```
+$   git clone https://github.com/RTimothyEdwards/magic
+$   cd magic/
+$   ./configure
+$   sudo make
+$   sudo make install
+```
+
+The above commands should be done in home directory.
+
+## Generating Layout with existing library cells ##
+
+terminal should be in home directory
+```
+cd OpenLane/
+$   cd designs/
+$   mkdir iiitb_siso
+$   cd iiitb_siso/
+$   touch config.json
+$   mkdir src
+$   cd src/
+$   touch iiitb_siso.v
+```
+After creating those files,copy the iiitb_counter.v file used prior to the one created in src.
+
+config.json file should be as follows.
+```
+{
+    "DESIGN_NAME": "iiitb_siso",
+    "VERILOG_FILES": "dir::src/iiitb_siso.v",
+    "CLOCK_PORT": "clk",
+    "CLOCK_NET": "clk",
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+    "CLOCK_PERIOD": 65,
+    "PL_RANDOM_GLB_PLACEMENT" :1,
+    "PL_TARGET_DENSITY": 0.5,
+    "FP_SIZING" : "relative",
+    "pdk::sky130*": {
+        "FP_CORE_UTIL": 5,
+        "scl::sky130_fd_sc_hd": {
+            "FP_CORE_UTIL": 5
+        }
+    },
+    
+    "LIB_SYNTH": "dir::src/sky130_fd_sc_hd__typical.lib",
+    "LIB_FASTEST": "dir::src/sky130_fd_sc_hd__fast.lib",
+    "LIB_SLOWEST": "dir::src/sky130_fd_sc_hd__slow.lib",
+    "LIB_TYPICAL": "dir::src/sky130_fd_sc_hd__typical.lib",  
+    "TEST_EXTERNAL_GLOB": "dir::../iiitb_siso/src/*"
+
+
+}
+```
+ Going back to OpenLAne Directory and doing following commands .
+ ```
+ $   sudo make mount
+%   ./flow.tcl -design iiitb_siso
+
+
+To view the layout we are using magic
+
+$   cd OpenLane/designs/iiitb_siso/runs/RUN_2022.09.20_06.52.16/results/final/def
+$   magic -T /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../../tmp/merged.nom.lef def read iiitb_siso.def &
+
+```
+<p align="center">
+  <img  src="/images/a1.png">
+  </p>
+
+Layout will open in new window as follows.
+##### This is layout without vsdinv #####
+<p align="center">
+  <img  src="/images/a1.png">
+  </p>
+  
+  
+ ## Customizing the layout ##
+ 
+ ##### sky130_vsdinv cell creation #####
+ 
+ Lets design a custom cell and include in library and get it in final layout. clone the vsdcelldesign repo using following command
+ ```
+ $ git clone https://github.com/nickson-jose/vsdstdcelldesign
+ 
+ copy sky130A.tech to vsdstdcelldesign directory and run the following command
+ 
+ $ magic -T sky130A.tech sky130_inv.mag 
+ ```
+ 
+ ### Layout of Inverter cell ###
+ <p align="center">
+  <img  src="/images/a1.png">
+  </p>
+  
+ Now, to extract the spice netlist, type the following commands in the tcl console. Here, parasitic capacitances and resistances of the inverter is extracted by
+ cthresh 0 rthresh 0.
+ 
+ ```
+extract all
+ext2spice cthresh 0 rthresh 0
+ext2spice
+ ```
+  ### Layout of Inverter cell ###
+ <p align="center">
+  <img  src="/images/a1.png">
+  </p>
+  
+  ###### Generating lef file ######
+  Type the following command in tikon terminal 
+  ```
+  % lef write sky130_vsdinv
+  ```
+  
+  <p align="center">
+  <img  src="/images/a1.png">
+  </p>
+  
+  Extracted lef file will be as shown below 
+  
+  ```
+  VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO sky130_inv
+  CLASS CORE ;
+  FOREIGN sky130_inv ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 1.380 BY 2.720 ;
+  SITE unithd ;
+  PIN A
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.165600 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.060 1.180 0.510 1.690 ;
+    END
+  END A
+  PIN Y
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.287800 ;
+    PORT
+      LAYER li1 ;
+        RECT 0.760 1.960 1.100 2.330 ;
+        RECT 0.880 1.690 1.050 1.960 ;
+        RECT 0.880 1.180 1.330 1.690 ;
+        RECT 0.880 0.760 1.050 1.180 ;
+        RECT 0.780 0.410 1.130 0.760 ;
+    END
+  END Y
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER nwell ;
+        RECT -0.200 1.140 1.570 3.040 ;
+      LAYER li1 ;
+        RECT -0.200 2.580 1.430 2.900 ;
+        RECT 0.180 2.330 0.350 2.580 ;
+        RECT 0.100 1.970 0.440 2.330 ;
+      LAYER mcon ;
+        RECT 0.230 2.640 0.400 2.810 ;
+        RECT 1.000 2.650 1.170 2.820 ;
+      LAYER met1 ;
+        RECT -0.200 2.480 1.570 2.960 ;
+    END
+  END VPWR
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER li1 ;
+        RECT 0.100 0.410 0.450 0.760 ;
+        RECT 0.150 0.210 0.380 0.410 ;
+        RECT 0.000 -0.150 1.460 0.210 ;
+      LAYER mcon ;
+        RECT 0.210 -0.090 0.380 0.080 ;
+        RECT 1.050 -0.090 1.220 0.080 ;
+      LAYER met1 ;
+        RECT -0.110 -0.240 1.570 0.240 ;
+    END
+  END VGND
+END sky130_inv
+END LIBRARY
+
+  ```
+Copy the generated lef file and the lib files from vsdcelldesign/libs to designs/iiit_siso/src.
+
+<p align="center">
+  <img  src="/images/a1.png">
+  </p>
+
+
  ##  Contributors ##
     P.Vamsidhar Reddy
     Kunal Ghosh
