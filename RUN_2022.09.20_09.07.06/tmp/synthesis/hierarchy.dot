@@ -1,0 +1,27 @@
+digraph "iiitb_siso" {
+label="iiitb_siso";
+rankdir="LR";
+remincross=true;
+n1 [ shape=diamond, label="q3", color="black", fontcolor="black" ];
+n2 [ shape=diamond, label="q2", color="black", fontcolor="black" ];
+n3 [ shape=diamond, label="q1", color="black", fontcolor="black" ];
+n4 [ shape=octagon, label="q", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="clk", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="d", color="black", fontcolor="black" ];
+c10 [ shape=record, label="{{<p7> $1|<p8> $2|<p9> $3}|d1\ndff|{}}" ];
+c11 [ shape=record, label="{{<p7> $1|<p8> $2|<p9> $3}|c\ndff|{}}" ];
+c12 [ shape=record, label="{{<p7> $1|<p8> $2|<p9> $3}|b\ndff|{}}" ];
+c13 [ shape=record, label="{{<p7> $1|<p8> $2|<p9> $3}|a\ndff|{}}" ];
+n1:e -> c10:p7:w [color="black", label=""];
+n1:e -> c11:p9:w [color="black", label=""];
+n2:e -> c11:p7:w [color="black", label=""];
+n2:e -> c12:p9:w [color="black", label=""];
+n3:e -> c12:p7:w [color="black", label=""];
+n3:e -> c13:p9:w [color="black", label=""];
+n4:e -> c10:p9:w [color="black", label=""];
+n5:e -> c10:p8:w [color="black", label=""];
+n5:e -> c11:p8:w [color="black", label=""];
+n5:e -> c12:p8:w [color="black", label=""];
+n5:e -> c13:p8:w [color="black", label=""];
+n6:e -> c13:p7:w [color="black", label=""];
+}

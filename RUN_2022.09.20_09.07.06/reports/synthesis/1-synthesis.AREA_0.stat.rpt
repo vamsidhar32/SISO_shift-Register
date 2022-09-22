@@ -1,0 +1,17 @@
+
+24. Printing statistics.
+
+=== iiitb_siso ===
+
+   Number of wires:                  6
+   Number of wire bits:              6
+   Number of public wires:           6
+   Number of public wire bits:       6
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  4
+     sky130_fd_sc_hd__dfxtp_2        4
+
+   Chip area for module '\iiitb_siso': 85.081600
+

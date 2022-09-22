@@ -1,0 +1,69 @@
+- status: 0 - openlane design prep
+  runtime_s: 1.91
+  runtime_ts: 0h0m1s909ms
+- status: 1 - synthesis - yosys
+  runtime_s: 0.7
+  runtime_ts: 0h0m0s703ms
+- status: 2 - sta - openroad
+  runtime_s: 0.59
+  runtime_ts: 0h0m0s595ms
+- status: 3 - floorplan initialization - openroad
+  runtime_s: 0.86
+  runtime_ts: 0h0m0s860ms
+- status: 4 - ioplace - openroad
+  runtime_s: 0.28
+  runtime_ts: 0h0m0s283ms
+- status: 5 - tap/decap insertion - openroad
+  runtime_s: 0.25
+  runtime_ts: 0h0m0s254ms
+- status: 6 - pdn generation - openroad
+  runtime_s: 0.59
+  runtime_ts: 0h0m0s586ms
+- status: 7 - random global placement - openlane
+  runtime_s: 0.32
+  runtime_ts: 0h0m0s315ms
+- status: 8 - resizer design optimizations - openroad
+  runtime_s: 0.62
+  runtime_ts: 0h0m0s623ms
+- status: 9 - write verilog - openroad
+  runtime_s: 0.24
+  runtime_ts: 0h0m0s243ms
+- status: 10 - remove buffers from nets - openlane
+  runtime_s: 0.36
+  runtime_ts: 0h0m0s360ms
+- status: 11 - detailed placement - openroad
+  runtime_s: 0.31
+  runtime_ts: 0h0m0s314ms
+- status: 12 - cts - openroad
+  runtime_s: 45.02
+  runtime_ts: 0h0m45s21ms
+- status: 13 - write verilog - openroad
+  runtime_s: 0.35
+  runtime_ts: 0h0m0s347ms
+- status: 14 - resizer timing optimizations - openroad
+  runtime_s: 0.65
+  runtime_ts: 0h0m0s653ms
+- status: 15 - write verilog - openroad
+  runtime_s: 0.28
+  runtime_ts: 0h0m0s281ms
+- status: 16 - remove buffers from nets - openlane
+  runtime_s: 0.35
+  runtime_ts: 0h0m0s348ms
+- status: 17 - detailed placement - openroad
+  runtime_s: 0.3
+  runtime_ts: 0h0m0s301ms
+- status: 18 - global routing - openroad
+  runtime_s: 0.81
+  runtime_ts: 0h0m0s811ms
+- status: 19 - fill insertion - openroad
+  runtime_s: 0.36
+  runtime_ts: 0h0m0s357ms
+- status: 20 - write verilog - openroad
+  runtime_s: 0.29
+  runtime_ts: 0h0m0s289ms
+- status: 21 - detailed_routing - openroad
+  runtime_s: 1.39
+  runtime_ts: 0h0m1s394ms
+- status: 22 - write verilog - openroad
+  runtime_s: 0.24
+  runtime_ts: 0h0m0s236ms
