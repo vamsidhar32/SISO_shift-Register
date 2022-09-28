@@ -590,6 +590,10 @@ OpenSTA> report_checks
 
   ```
   
+  ```
+  Performance = 1/(clock period - slack) = 1/(65.00 - 50.27)ns = 67.888Mhz 
+  ```
+  
    <p align="center">
   <img  src="/images/per2.png">
   </p>
