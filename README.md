@@ -569,7 +569,35 @@ run the following command to perform CTS
   ```
   
   ### Performance ###
-  shvc
+  ```
+$ sta
+ 
+OpenSTA> read_liberty -max /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/src/sky130_fd_sc_hd__fast.lib
+
+OpenSTA> read_liberty -max /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/src/sky130_fd_sc_hd__slow.lib
+
+OpenSTA> read_verilog /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/runs/RUN_2022.09.28_04.24.17/results/routing/iiitb_siso.resized.v
+
+OpenSTA> link_design iiitb_siso
+
+OpenSTA> read_sdc /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/runs/RUN_2022.09.28_04.24.17/results/cts/iiitb_siso.sdc
+
+OpenSTA> read_spef /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/runs/RUN_2022.09.28_04.24.17/results/routing/iiitb_siso.nom.spef
+
+OpenSTA> set_propagated_clock [all_clocks]
+
+OpenSTA> report_checks
+
+  ```
+  
+   <p align="center">
+  <img  src="/images/per2.png">
+  </p>
+  
+   <p align="center">
+  <img  src="/images/per1.png">
+  </p>
+  
   
   ### Flipflop to standard cell ratio ###
   
