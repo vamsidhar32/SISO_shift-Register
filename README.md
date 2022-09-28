@@ -589,7 +589,7 @@ OpenSTA> report_checks
 %	report_checks -from _2_ -to _3_
 
   
-  
+  ```
   
    <p align="center">
   <img  src="/images/perform1.png">
