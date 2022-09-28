@@ -546,7 +546,66 @@ run the following command to perform CTS
   <img  src="/images/r5.png">
   </p>
   
+  # Results #
   
+  ### Post synthesis gate count ###
+  
+  <p align="center">
+  <img  src="/images/mq2.png">
+  </p>
+  
+  ```
+   Gate Count = 4 ;
+  
+  ```
+  
+  ### Area ###
+  <p align="center">
+  <img  src="/images/mq3.png">
+  </p>
+  
+  ```
+  Area of the chip is 2139.093 sq micrometers
+  ```
+  
+  ### Performance ###
+  shvc
+  
+  ### Flipflop to standard cell ratio ###
+  
+   <p align="center">
+  <img  src="/images/mq5.png">
+  </p>
+  
+  flipflop to standard cell ratio is given by :
+  ```
+  total number of flipflops / total number of cells = 4/4
+  
+  fliflop to cell ratio = 1 
+  
+  ```
+  
+  ### Power ###
+  <p align="center">
+  <img  src="/images/mq6.png">
+  </p>
+  
+  
+ Internal Power = 10.5 uW (87.0%) </b></I><br>
+ Switching Power = 1.57 uW (13.0%) </b></I><br>
+ Leakage Power = 0.174 nW (0.00%) </b></I><br>
+ Total Power = 12.2 uW (100%) </b></I><br>
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
   
   
  
