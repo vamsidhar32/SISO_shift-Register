@@ -590,9 +590,14 @@ OpenSTA> report_checks
 
   ```
   
+   <p align="center">
+  <img  src="/images/per2.png">
+  </p>
   ```
-  Performance = 1/(clock period - slack) = 1/(65.00 - 50.27)ns = 67.888Mhz 
+  This is the performance from reg to reg i.e from flipflop 2 to flipflop 3.
+  Performance = 1/(clock period - slack) = 1/(65.00 - 64.32)ns = 1.47 Ghz 
   ```
+  
   
    <p align="center">
   <img  src="/images/per2.png">
@@ -601,7 +606,10 @@ OpenSTA> report_checks
    <p align="center">
   <img  src="/images/per1.png">
   </p>
-  
+   
+  ```
+  Performance = 1/(clock period - slack) = 1/(65.00 - 50.27)ns =  67.888 Mhz
+  ```
   
   ### Flipflop to standard cell ratio ###
   
