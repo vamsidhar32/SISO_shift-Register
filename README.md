@@ -569,6 +569,43 @@ run the following command to perform CTS
   ```
   
   ### Performance ###
+  
+  ```
+OpenSTA> read_liberty -min /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+
+OpenSTA> read_liberty -max /home/vamsidhar/Desktop/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v56.lib
+
+OpenSTA> read_verilog /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/runs/RUN_2022.09.28_04.24.17/results/cts/iiitb_siso.v
+
+OpenSTA> link_design iiitb_siso
+
+OpenSTA> read_sdc /home/vamsidhar/Desktop/OpenLane/designs/iiitb_siso/runs/RUN_2022.09.28_04.24.17/results/cts/iiitb_siso.sdc
+
+OpenSTA> set_propagated_clock [all_clocks]
+
+OpenSTA> report_checks
+
+
+%	report_checks -from _2_ -to _3_
+
+  ```
+  
+  
+   <p align="center">
+  <img  src="/images/per2.png">
+  </p>
+  
+  ```
+  
+  This is the performance from reg to reg i.e from flipflop 2 to flipflop 3.
+  Performance = 1/(clock period - slack) 
+             = 1/(65.00 - 64.32)ns = 
+             = 1.47 Ghz 
+  
+  ```
+  
+  
+  
   ```
 $ sta
  
@@ -588,19 +625,6 @@ OpenSTA> set_propagated_clock [all_clocks]
 
 OpenSTA> report_checks
 
-  ```
-  
-   <p align="center">
-  <img  src="/images/per2.png">
-  </p>
-  
-  ```
-  
-  This is the performance from reg to reg i.e from flipflop 2 to flipflop 3.
-  Performance = 1/(clock period - slack) 
-             = 1/(65.00 - 64.32)ns = 
-             = 1.47 Ghz 
-  
   ```
   
   
