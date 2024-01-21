@@ -1,4 +1,4 @@
-
+## Day1 ##
 ## 1. Design Description ##
 #### 4-BIT SISO SHIFT REGISTER ####
    Design description of SISO shift register.First we give 2 inputs to D fliflop ,one is clock, second is a serial input of bits. Now the output is connected to the input of next flipflop but the clock input is same as the first flipflop.Likewise we connect 4 flipflops to get 4 bit shift register. Register is a group of filpflops
